@@ -296,6 +296,10 @@ Loading the files row-for-row would have stored each of those 10,000 times, so
 the flat rows are decomposed into the entities they actually describe. 20,000
 rows become 36 entity documents plus the readings that genuinely vary.
 
+Residents get a numeric id on import: Youssef is 1001, Ali is 1002. The
+assignment is anchored to the login username, so a re-import reuses the same
+number and a new resident takes the next free one.
+
 Three quirks in the source worth knowing:
 
 - **Duplicated columns.** `Home.Unit.Code/Bedrooms/Tower` are exact copies of
@@ -320,18 +324,25 @@ and `sources` records which feeds contributed:
   "availableSpaces": 74, "totalSpaces": 120,
   "evUsedChargers": 2, "evTotalChargers": 12,
   "occupancyPercent": 38.3,
-  "sources": ["ali", "youssef"]
+  "sources": [1001, 1002]
 }
 ```
+
+`sources` holds residentIds, not names.
 
 `occupancyPercent` is **recomputed** from the merged counts rather than averaged,
 so the stored percentage always agrees with the stored spaces.
 
 ### Collections
 
+Residents are keyed by **`residentId`, a unique number** (1001, 1002, ...), not
+by name. Every other collection references a resident by that number, because a
+name is not unique. The login `username` is the stable natural key the importer
+maps to an id, so re-importing never reshuffles the numbering.
+
 | Resource | Collection | Key | Scope |
 | --- | --- | --- | --- |
-| `residents` | `residents` | `residentId` | per resident |
+| `residents` | `residents` | `residentId` (number) | per resident |
 | `units` | `units` | `unitCode` | per unit |
 | `vehicles` | `vehicles` | `plate` | per resident |
 | `parking-slots` | `parking_slots` | `slotCode` | per resident |
@@ -367,7 +378,9 @@ Every resource gets the same operations under `/api/users/{resource}`:
 | DELETE | `/api/users/{resource}/{id}` | delete one |
 
 `{id}` accepts either the business key or the ObjectId, so
-`/api/users/residents/youssef` and `/api/users/residents/6ab125...` both work.
+`/api/users/residents/1001` and `/api/users/residents/6ab125...` both work.
+A non-numeric residentId is rejected with 400 rather than silently matching
+nothing.
 
 These are generated from one registry in
 [app/services/resources.py](app/services/resources.py) rather than written out
@@ -381,7 +394,8 @@ filter is rejected with the list of allowed ones**, rather than silently matchin
 nothing.
 
 ```bash
-curl "http://localhost:8000/api/users/visitor-passes?residentId=youssef&status=Scheduled"
+curl "http://localhost:8000/api/users/residents"
+curl "http://localhost:8000/api/users/visitor-passes?residentId=1001&status=Scheduled"
 curl "http://localhost:8000/api/users/maintenance-requests?q=oven"
 curl "http://localhost:8000/api/users/weather?from=2026-10-01&to=2026-10-02"
 

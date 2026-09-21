@@ -4,7 +4,7 @@
 
 @host = http://localhost:8000
 @api = {{host}}/api/users
-@resident = youssef
+@resident = 1001
 @unit = H-601
 
 ### ---------------------------------------------------------------- overview
@@ -18,11 +18,17 @@ GET {{api}}
 ### List residents  (passwordHash is never returned)
 GET {{api}}/residents
 
-### Substring search across name, username and residentId
+### Substring search across name and username
 GET {{api}}/residents?q=youssef
 
-### By business key
+### Look a resident up by login, which is the stable natural key
+GET {{api}}/residents?username=youssef.samir@parklane.com
+
+### By residentId - a number, not a name
 GET {{api}}/residents/{{resident}}
+
+### A name is rejected: residentId must be numeric
+GET {{api}}/residents/youssef
 
 ### ...or by ObjectId - both work on the same route
 GET {{api}}/residents/000000000000000000000000
@@ -32,7 +38,7 @@ POST {{api}}/residents
 Content-Type: application/json
 
 {
-  "residentId": "nour",
+  "residentId": 1003,
   "name": "Nour",
   "username": "nour.hassan@parklane.com",
   "password": "change-me",
@@ -41,7 +47,7 @@ Content-Type: application/json
 }
 
 ### Update metadata; omitting password leaves the stored hash untouched
-PATCH {{api}}/residents/nour
+PATCH {{api}}/residents/1003
 Content-Type: application/json
 
 {
@@ -50,7 +56,7 @@ Content-Type: application/json
 }
 
 ### Rotate the password - re-hashed, never echoed back
-PATCH {{api}}/residents/nour
+PATCH {{api}}/residents/1003
 Content-Type: application/json
 
 {
@@ -58,7 +64,7 @@ Content-Type: application/json
 }
 
 ### Delete
-DELETE {{api}}/residents/nour
+DELETE {{api}}/residents/1003
 
 
 ### ------------------------------------------------------------------- units
@@ -123,7 +129,7 @@ POST {{api}}/parking-guest-requests
 Content-Type: application/json
 
 {
-  "residentId": "{{resident}}",
+  "residentId": {{resident}},
   "date": "2026-10-15",
   "startTime": "18:00:00",
   "endTime": "23:00:00",
@@ -151,7 +157,7 @@ POST {{api}}/visitor-passes
 Content-Type: application/json
 
 {
-  "residentId": "{{resident}}",
+  "residentId": {{resident}},
   "name": "Omar Khaled",
   "visitDate": "2026-10-12",
   "visitTime": "19:30:00",
@@ -166,8 +172,8 @@ POST {{api}}/visitor-passes
 Content-Type: application/json
 
 [
-  { "residentId": "{{resident}}", "name": "Guest A", "visitDate": "2026-10-13", "visitTime": "18:00:00" },
-  { "residentId": "{{resident}}", "name": "Guest B", "visitDate": "2026-10-14", "visitTime": "20:00:00" }
+  { "residentId": {{resident}}, "name": "Guest A", "visitDate": "2026-10-13", "visitTime": "18:00:00" },
+  { "residentId": {{resident}}, "name": "Guest B", "visitDate": "2026-10-14", "visitTime": "20:00:00" }
 ]
 
 ### Mark a pass as arrived - paste an _id from a list response
@@ -202,7 +208,7 @@ Content-Type: application/json
 
 {
   "requestId": "REQ-2026-90001",
-  "residentId": "{{resident}}",
+  "residentId": {{resident}},
   "unitCode": "{{unit}}",
   "category": "Plumbing",
   "title": "Kitchen tap dripping",
@@ -270,7 +276,7 @@ POST {{api}}/community-poll-votes
 Content-Type: application/json
 
 {
-  "residentId": "{{resident}}",
+  "residentId": {{resident}},
   "pollKey": "resident-priorities",
   "optionName": "More Community Events"
 }
@@ -294,7 +300,7 @@ GET {{api}}/weather?condition=Light Rain&limit=20
 DELETE {{api}}/visitor-passes
 
 ### Allowed with a filter
-DELETE {{api}}/visitor-passes?residentId=nour
+DELETE {{api}}/visitor-passes?residentId=1003
 
 ### Or explicitly confirmed - empties the collection
 DELETE {{api}}/visitor-passes?confirm=true
