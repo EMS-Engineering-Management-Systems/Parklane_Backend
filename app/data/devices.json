@@ -1,0 +1,1489 @@
+{
+  "database": "Atal",
+  "source": "Parklane_Tags_Bool_Min_Max.xlsx",
+  "deviceCount": 28,
+  "tagCount": 174,
+  "devices": [
+    {
+      "type": "Transformer",
+      "label": "Transformer",
+      "category": "Electrical",
+      "instances": 1,
+      "tags": [
+        {
+          "name": "Voltage",
+          "fullName": "Transformer_Voltage",
+          "sourceName": "Transformer Voltage",
+          "kind": "numeric",
+          "min": 0,
+          "max": 15000,
+          "integer": true
+        },
+        {
+          "name": "Current",
+          "fullName": "Transformer_Current",
+          "sourceName": "Transformer Current",
+          "kind": "numeric",
+          "min": 0,
+          "max": 5000,
+          "integer": true
+        },
+        {
+          "name": "Frequency",
+          "fullName": "Transformer_Frequency",
+          "sourceName": "Transformer Frequency",
+          "kind": "numeric",
+          "min": 45,
+          "max": 55,
+          "integer": true
+        },
+        {
+          "name": "Power",
+          "fullName": "Transformer_Power",
+          "sourceName": "Transformer_Power",
+          "kind": "numeric",
+          "min": 0,
+          "max": 5000,
+          "integer": true
+        },
+        {
+          "name": "kWh",
+          "fullName": "Transformer_kWh",
+          "sourceName": "Transformer_kWh",
+          "kind": "numeric",
+          "min": 0,
+          "max": 1000000000,
+          "integer": true
+        },
+        {
+          "name": "Temperature",
+          "fullName": "Transformer_Temperature",
+          "sourceName": "Transformer_Temperature",
+          "kind": "numeric",
+          "min": -20,
+          "max": 150,
+          "integer": true
+        },
+        {
+          "name": "alarms",
+          "fullName": "Transformer_alarms",
+          "sourceName": "Transformer_alarms",
+          "kind": "boolean"
+        },
+        {
+          "name": "Trip_Status",
+          "fullName": "Transformer_Trip_Status",
+          "sourceName": "Transformer_Trip_Status",
+          "kind": "boolean"
+        }
+      ]
+    },
+    {
+      "type": "RMU",
+      "label": "RMU",
+      "category": "Electrical",
+      "instances": 1,
+      "tags": [
+        {
+          "name": "on_off_Status",
+          "fullName": "RMU_on_off_Status",
+          "sourceName": "RMU_on/off_Status",
+          "kind": "boolean"
+        },
+        {
+          "name": "Breaker_Status",
+          "fullName": "RMU_Breaker_Status",
+          "sourceName": "RMU_Breaker_Status",
+          "kind": "boolean"
+        },
+        {
+          "name": "Trip",
+          "fullName": "RMU_Trip",
+          "sourceName": "RMU_Trip",
+          "kind": "boolean"
+        },
+        {
+          "name": "Fault",
+          "fullName": "RMU_Fault",
+          "sourceName": "RMU_Fault",
+          "kind": "boolean"
+        },
+        {
+          "name": "protection_alarms",
+          "fullName": "RMU_protection_alarms",
+          "sourceName": "RMU_protection_alarms",
+          "kind": "boolean"
+        }
+      ]
+    },
+    {
+      "type": "MDB",
+      "label": "MDB",
+      "category": "Electrical",
+      "instances": 1,
+      "tags": [
+        {
+          "name": "Voltage",
+          "fullName": "MDB_Voltage",
+          "sourceName": "MDB_Voltage",
+          "kind": "numeric",
+          "min": 0,
+          "max": 500,
+          "integer": true
+        },
+        {
+          "name": "Current",
+          "fullName": "MDB_Current",
+          "sourceName": "MDB_Current",
+          "kind": "numeric",
+          "min": 0,
+          "max": 5000,
+          "integer": true
+        },
+        {
+          "name": "kW",
+          "fullName": "MDB_kW",
+          "sourceName": "MDB_kW",
+          "kind": "numeric",
+          "min": 0,
+          "max": 5000,
+          "integer": true
+        },
+        {
+          "name": "kVA",
+          "fullName": "MDB_kVA",
+          "sourceName": "MDB_kVA",
+          "kind": "numeric",
+          "min": 0,
+          "max": 6000,
+          "integer": true
+        },
+        {
+          "name": "PF",
+          "fullName": "MDB_PF",
+          "sourceName": "MDB_PF",
+          "kind": "numeric",
+          "min": 0,
+          "max": 1,
+          "integer": true
+        },
+        {
+          "name": "Frequency",
+          "fullName": "MDB_Frequency",
+          "sourceName": "MDB_Frequency",
+          "kind": "numeric",
+          "min": 45,
+          "max": 55,
+          "integer": true
+        },
+        {
+          "name": "Energy_consumption",
+          "fullName": "MDB_Energy_consumption",
+          "sourceName": "MDB_Energy_consumption",
+          "kind": "numeric",
+          "min": 0,
+          "max": 1000000000,
+          "integer": true
+        },
+        {
+          "name": "Breaker_Status",
+          "fullName": "MDB_Breaker_Status",
+          "sourceName": "MDB_Breaker_Status",
+          "kind": "boolean"
+        },
+        {
+          "name": "Trip_alarms",
+          "fullName": "MDB_Trip_alarms",
+          "sourceName": "MDB_Trip_alarms",
+          "kind": "boolean"
+        }
+      ]
+    },
+    {
+      "type": "Emergency_Electrical_Panel",
+      "label": "Emergency Electrical Panel",
+      "category": "Electrical",
+      "instances": 1,
+      "tags": [
+        {
+          "name": "Incoming_Status",
+          "fullName": "Emergency_Electrical_Panel_Incoming_Status",
+          "sourceName": "Emergency_Electrical_Panel_Incoming_Status",
+          "kind": "boolean"
+        },
+        {
+          "name": "Breaker_Status",
+          "fullName": "Emergency_Electrical_Panel_Breaker_Status",
+          "sourceName": "Emergency_Electrical_Panel_Breaker_Status",
+          "kind": "boolean"
+        },
+        {
+          "name": "Load",
+          "fullName": "Emergency_Electrical_Panel_Load",
+          "sourceName": "Emergency_Electrical_Panel_Load",
+          "kind": "numeric",
+          "min": 0,
+          "max": 3000,
+          "integer": true
+        },
+        {
+          "name": "Current",
+          "fullName": "Emergency_Electrical_Panel_Current",
+          "sourceName": "Emergency_Electrical_Panel_Current",
+          "kind": "numeric",
+          "min": 0,
+          "max": 5000,
+          "integer": true
+        },
+        {
+          "name": "Voltage",
+          "fullName": "Emergency_Electrical_Panel_Voltage",
+          "sourceName": "Emergency_Electrical_Panel_Voltage",
+          "kind": "numeric",
+          "min": 0,
+          "max": 500,
+          "integer": true
+        },
+        {
+          "name": "Emergency_alarms",
+          "fullName": "Emergency_Electrical_Panel_Emergency_alarms",
+          "sourceName": "Emergency_Electrical_Panel_Emergency_alarms",
+          "kind": "boolean"
+        }
+      ]
+    },
+    {
+      "type": "Generator",
+      "label": "Generator",
+      "category": "Electrical",
+      "instances": 1,
+      "tags": [
+        {
+          "name": "on_off",
+          "fullName": "Generator_on_off",
+          "sourceName": "Generator_on/off",
+          "kind": "boolean"
+        },
+        {
+          "name": "A_M",
+          "fullName": "Generator_A_M",
+          "sourceName": "Generator_A/M",
+          "kind": "boolean"
+        },
+        {
+          "name": "Run_Hours",
+          "fullName": "Generator_Run_Hours",
+          "sourceName": "Generator_Run_Hours",
+          "kind": "numeric",
+          "min": 0,
+          "max": 1000000,
+          "integer": true
+        },
+        {
+          "name": "Fuel_Level",
+          "fullName": "Generator_Fuel_Level",
+          "sourceName": "Generator_Fuel_Level",
+          "kind": "numeric",
+          "min": 0,
+          "max": 100,
+          "integer": true
+        },
+        {
+          "name": "Voltage",
+          "fullName": "Generator_Voltage",
+          "sourceName": "Generator_Voltage",
+          "kind": "numeric",
+          "min": 0,
+          "max": 500,
+          "integer": true
+        },
+        {
+          "name": "Current",
+          "fullName": "Generator_Current",
+          "sourceName": "Generator_Current",
+          "kind": "numeric",
+          "min": 0,
+          "max": 5000,
+          "integer": true
+        },
+        {
+          "name": "Frequency",
+          "fullName": "Generator_Frequency",
+          "sourceName": "Generator_Frequency",
+          "kind": "numeric",
+          "min": 45,
+          "max": 55,
+          "integer": true
+        },
+        {
+          "name": "kW",
+          "fullName": "Generator_kW",
+          "sourceName": "Generator_kW",
+          "kind": "numeric",
+          "min": 0,
+          "max": 5000,
+          "integer": true
+        },
+        {
+          "name": "Engine_Temp",
+          "fullName": "Generator_Engine_Temp",
+          "sourceName": "Generator_Engine_Temp",
+          "kind": "numeric",
+          "min": -20,
+          "max": 150,
+          "integer": true
+        },
+        {
+          "name": "Oil_Temp",
+          "fullName": "Generator_Oil_Temp",
+          "sourceName": "Generator_Oil_Temp",
+          "kind": "numeric",
+          "min": 0,
+          "max": 10,
+          "integer": true
+        },
+        {
+          "name": "Battery_Voltage",
+          "fullName": "Generator_Battery_Voltage",
+          "sourceName": "Generator_Battery_Voltage",
+          "kind": "numeric",
+          "min": 0,
+          "max": 32,
+          "integer": true
+        },
+        {
+          "name": "Common_alarm",
+          "fullName": "Generator_Common_alarm",
+          "sourceName": "Generator_Common_alarm",
+          "kind": "boolean"
+        },
+        {
+          "name": "Emergency_Stop",
+          "fullName": "Generator_Emergency_Stop",
+          "sourceName": "Generator_Emergency_Stop",
+          "kind": "boolean"
+        }
+      ]
+    },
+    {
+      "type": "ATS",
+      "label": "ATS",
+      "category": "Electrical",
+      "instances": 1,
+      "tags": [
+        {
+          "name": "Normal_Supply",
+          "fullName": "ATS_Normal_Supply",
+          "sourceName": "ATS_Normal_Supply",
+          "kind": "boolean"
+        },
+        {
+          "name": "Emergency_Supply",
+          "fullName": "ATS_Emergency_Supply",
+          "sourceName": "ATS_Emergency_Supply",
+          "kind": "boolean"
+        },
+        {
+          "name": "Transfer_Status",
+          "fullName": "ATS_Transfer_Status",
+          "sourceName": "ATS_Transfer_Status",
+          "kind": "boolean"
+        },
+        {
+          "name": "Failure_Alarm",
+          "fullName": "ATS_Failure_Alarm",
+          "sourceName": "ATS_Failure_Alarm",
+          "kind": "boolean"
+        }
+      ]
+    },
+    {
+      "type": "SolarPV",
+      "label": "SolarPV",
+      "category": "Electrical",
+      "instances": 1,
+      "tags": [
+        {
+          "name": "Solar_Generation",
+          "fullName": "SolarPV_Solar_Generation",
+          "sourceName": "SolarPV_Solar_Generation",
+          "kind": "numeric",
+          "min": 0,
+          "max": 5000,
+          "integer": true
+        },
+        {
+          "name": "DC_AC_power",
+          "fullName": "SolarPV_DC_AC_power",
+          "sourceName": "SolarPV_DC/AC_power",
+          "kind": "numeric",
+          "min": 0,
+          "max": 5000,
+          "integer": true
+        },
+        {
+          "name": "Daily_generation",
+          "fullName": "SolarPV_Daily_generation",
+          "sourceName": "SolarPV_Daily generation",
+          "kind": "numeric",
+          "min": 0,
+          "max": 50000,
+          "integer": true
+        },
+        {
+          "name": "Monthly_generation",
+          "fullName": "SolarPV_Monthly_generation",
+          "sourceName": "SolarPV_Monthly generation",
+          "kind": "numeric",
+          "min": 0,
+          "max": 1500000,
+          "integer": true
+        },
+        {
+          "name": "Total_generation",
+          "fullName": "SolarPV_Total_generation",
+          "sourceName": "SolarPV_Total generation",
+          "kind": "numeric",
+          "min": 0,
+          "max": 1000000000,
+          "integer": true
+        },
+        {
+          "name": "Faults",
+          "fullName": "SolarPV_Faults",
+          "sourceName": "SolarPV_Faults",
+          "kind": "boolean"
+        },
+        {
+          "name": "Inverter_status",
+          "fullName": "SolarPV_Inverter_status",
+          "sourceName": "SolarPV_Inverter status",
+          "kind": "boolean"
+        },
+        {
+          "name": "Grid_interaction",
+          "fullName": "SolarPV_Grid_interaction",
+          "sourceName": "SolarPV_Grid interaction",
+          "kind": "boolean"
+        }
+      ]
+    },
+    {
+      "type": "Electrical_Digital_Meters",
+      "label": "Electrical Digital Meters",
+      "category": "Electrical",
+      "instances": 1,
+      "tags": [
+        {
+          "name": "Apartment101_Current_Consumption",
+          "fullName": "Electrical_Digital_Meters_Apartment101_Current_Consumption",
+          "sourceName": "Electrical_Digital_Meters_Apartment101_Current_Consumption",
+          "kind": "numeric",
+          "min": 0,
+          "max": 100,
+          "integer": true
+        },
+        {
+          "name": "Apartment101_Daily_kWh",
+          "fullName": "Electrical_Digital_Meters_Apartment101_Daily_kWh",
+          "sourceName": "Electrical_Digital_Meters_Apartment101_Daily_kWh",
+          "kind": "numeric",
+          "min": 0,
+          "max": 500,
+          "integer": true
+        },
+        {
+          "name": "Apartment101_Monthly_kWh",
+          "fullName": "Electrical_Digital_Meters_Apartment101_Monthly_kWh",
+          "sourceName": "Electrical_Digital_Meters_Apartment101_Monthly_kWh",
+          "kind": "numeric",
+          "min": 0,
+          "max": 10000,
+          "integer": true
+        },
+        {
+          "name": "Apartment101_Historical_Consumption",
+          "fullName": "Electrical_Digital_Meters_Apartment101_Historical_Consumption",
+          "sourceName": "Electrical_Digital_Meters_Apartment101_Historical_Consumption",
+          "kind": "numeric",
+          "min": 0,
+          "max": 100000000,
+          "integer": true
+        },
+        {
+          "name": "Building_Total_Consumption",
+          "fullName": "Electrical_Digital_Meters_Building_Total_Consumption",
+          "sourceName": "Electrical_Digital_Meters_Building_Total_Consumption",
+          "kind": "numeric",
+          "min": 0,
+          "max": 1000000000,
+          "integer": true
+        },
+        {
+          "name": "Building_Common_Area_Consumption",
+          "fullName": "Electrical_Digital_Meters_Building_Common_Area_Consumption",
+          "sourceName": "Electrical_Digital_Meters_Building_Common_Area_Consumption",
+          "kind": "numeric",
+          "min": 0,
+          "max": 1000000000,
+          "integer": true
+        },
+        {
+          "name": "Building_Solar_Generation",
+          "fullName": "Electrical_Digital_Meters_Building_Solar_Generation",
+          "sourceName": "Electrical_Digital_Meters_Building_Solar_Generation",
+          "kind": "numeric",
+          "min": 0,
+          "max": 1000000000,
+          "integer": true
+        },
+        {
+          "name": "Building_Generator_Consumption",
+          "fullName": "Electrical_Digital_Meters_Building_Generator_Consumption",
+          "sourceName": "Electrical_Digital_Meters_Building_Generator_Consumption",
+          "kind": "numeric",
+          "min": 0,
+          "max": 1000000000,
+          "integer": true
+        },
+        {
+          "name": "Building_Peak_Demand",
+          "fullName": "Electrical_Digital_Meters_Building_Peak_Demand",
+          "sourceName": "Electrical_Digital_Meters_Building_Peak_Demand",
+          "kind": "numeric",
+          "min": 0,
+          "max": 5000,
+          "integer": true
+        },
+        {
+          "name": "Building_Energy_Cost",
+          "fullName": "Electrical_Digital_Meters_Building_Energy_Cost",
+          "sourceName": "Electrical_Digital_Meters_Building_Energy_Cost",
+          "kind": "numeric",
+          "min": 0,
+          "max": 1000000000,
+          "integer": true
+        }
+      ]
+    },
+    {
+      "type": "Elevators",
+      "label": "Elevators",
+      "category": "Vertical Transportation",
+      "instances": 1,
+      "tags": [
+        {
+          "name": "Elevator_Status",
+          "fullName": "Elevators_Elevator_Status",
+          "sourceName": "Elevators_Elevator_Status",
+          "kind": "numeric",
+          "min": 0,
+          "max": 10,
+          "integer": true
+        },
+        {
+          "name": "Running_Stop",
+          "fullName": "Elevators_Running_Stop",
+          "sourceName": "Elevators_Running_Stop",
+          "kind": "boolean"
+        },
+        {
+          "name": "Floor_Position",
+          "fullName": "Elevators_Floor_Position",
+          "sourceName": "Elevators_Floor_Position",
+          "kind": "numeric",
+          "min": 0,
+          "max": 7,
+          "integer": true
+        },
+        {
+          "name": "Direction",
+          "fullName": "Elevators_Direction",
+          "sourceName": "Elevators_Direction",
+          "kind": "numeric",
+          "min": 0,
+          "max": 2,
+          "integer": true
+        },
+        {
+          "name": "Fault",
+          "fullName": "Elevators_Fault",
+          "sourceName": "Elevators_Fault",
+          "kind": "boolean"
+        },
+        {
+          "name": "Maintenance_Status",
+          "fullName": "Elevators_Maintenance_Status",
+          "sourceName": "Elevators_Maintenance_Status",
+          "kind": "boolean"
+        },
+        {
+          "name": "Emergency_Alarm",
+          "fullName": "Elevators_Emergency_Alarm",
+          "sourceName": "Elevators_Emergency_Alarm",
+          "kind": "boolean"
+        },
+        {
+          "name": "Fire_Mode",
+          "fullName": "Elevators_Fire_Mode",
+          "sourceName": "Elevators_Fire_Mode",
+          "kind": "boolean"
+        },
+        {
+          "name": "Power_Failure_Status",
+          "fullName": "Elevators_Power_Failure_Status",
+          "sourceName": "Elevators_Power_Failure_Status",
+          "kind": "boolean"
+        }
+      ]
+    },
+    {
+      "type": "CCTV",
+      "label": "CCTV",
+      "category": "ELV / Security",
+      "instances": 1,
+      "tags": [
+        {
+          "name": "Camera_Status",
+          "fullName": "CCTV_Camera_Status",
+          "sourceName": "CCTV_Camera_Status",
+          "kind": "boolean"
+        },
+        {
+          "name": "Recording_Server_Status",
+          "fullName": "CCTV_Recording_Server_Status",
+          "sourceName": "CCTV_Recording_Server_Status",
+          "kind": "boolean"
+        },
+        {
+          "name": "NVR_Status",
+          "fullName": "CCTV_NVR_Status",
+          "sourceName": "CCTV_NVR_Status",
+          "kind": "boolean"
+        },
+        {
+          "name": "Camera_Failure",
+          "fullName": "CCTV_Camera_Failure",
+          "sourceName": "CCTV_Camera_Failure",
+          "kind": "boolean"
+        },
+        {
+          "name": "Event_Alarm_Integration",
+          "fullName": "CCTV_Event_Alarm_Integration",
+          "sourceName": "CCTV_Event_Alarm_Integration",
+          "kind": "boolean"
+        }
+      ]
+    },
+    {
+      "type": "AI_Video_Analytics",
+      "label": "AI Video Analytics",
+      "category": "ELV / Security",
+      "instances": 1,
+      "tags": [
+        {
+          "name": "Intrusion",
+          "fullName": "AI_Video_Analytics_Intrusion",
+          "sourceName": "AI_Video_Analytics_Intrusion",
+          "kind": "boolean"
+        },
+        {
+          "name": "Loitering",
+          "fullName": "AI_Video_Analytics_Loitering",
+          "sourceName": "AI_Video_Analytics_Loitering",
+          "kind": "boolean"
+        },
+        {
+          "name": "Object_Detection",
+          "fullName": "AI_Video_Analytics_Object_Detection",
+          "sourceName": "AI_Video_Analytics_Object_Detection",
+          "kind": "boolean"
+        },
+        {
+          "name": "Vehicle_Detection",
+          "fullName": "AI_Video_Analytics_Vehicle_Detection",
+          "sourceName": "AI_Video_Analytics_Vehicle_Detection",
+          "kind": "boolean"
+        },
+        {
+          "name": "Abnormal_Activity",
+          "fullName": "AI_Video_Analytics_Abnormal_Activity",
+          "sourceName": "AI_Video_Analytics_Abnormal_Activity",
+          "kind": "boolean"
+        }
+      ]
+    },
+    {
+      "type": "Fire_Alarm",
+      "label": "Fire Alarm",
+      "category": "Life Safety",
+      "instances": 1,
+      "tags": [
+        {
+          "name": "Fire_Alarm",
+          "fullName": "Fire_Alarm_Fire_Alarm",
+          "sourceName": "Fire_Alarm_Fire_Alarm",
+          "kind": "boolean"
+        },
+        {
+          "name": "Zone_Alarm",
+          "fullName": "Fire_Alarm_Zone_Alarm",
+          "sourceName": "Fire_Alarm_Zone_Alarm",
+          "kind": "boolean"
+        },
+        {
+          "name": "Detector_Alarm",
+          "fullName": "Fire_Alarm_Detector_Alarm",
+          "sourceName": "Fire_Alarm_Detector_Alarm",
+          "kind": "boolean"
+        },
+        {
+          "name": "MCP_Alarm",
+          "fullName": "Fire_Alarm_MCP_Alarm",
+          "sourceName": "Fire_Alarm_MCP_Alarm",
+          "kind": "boolean"
+        },
+        {
+          "name": "Fault",
+          "fullName": "Fire_Alarm_Fault",
+          "sourceName": "Fire_Alarm_Fault",
+          "kind": "boolean"
+        },
+        {
+          "name": "Panel_Status",
+          "fullName": "Fire_Alarm_Panel_Status",
+          "sourceName": "Fire_Alarm_Panel_Status",
+          "kind": "boolean"
+        }
+      ]
+    },
+    {
+      "type": "IPTV",
+      "label": "IPTV",
+      "category": "ELV",
+      "instances": 1,
+      "tags": [
+        {
+          "name": "IPTV_Server",
+          "fullName": "IPTV_IPTV_Server",
+          "sourceName": "IPTV_IPTV_Server",
+          "kind": "boolean"
+        },
+        {
+          "name": "Network_Status",
+          "fullName": "IPTV_Network_Status",
+          "sourceName": "IPTV_Network_Status",
+          "kind": "boolean"
+        },
+        {
+          "name": "Headend_Status",
+          "fullName": "IPTV_Headend_Status",
+          "sourceName": "IPTV_Headend_Status",
+          "kind": "boolean"
+        },
+        {
+          "name": "Device_Status",
+          "fullName": "IPTV_Device_Status",
+          "sourceName": "IPTV_Device_Status",
+          "kind": "boolean"
+        },
+        {
+          "name": "Fault_Alarms",
+          "fullName": "IPTV_Fault_Alarms",
+          "sourceName": "IPTV_Fault_Alarms",
+          "kind": "boolean"
+        }
+      ]
+    },
+    {
+      "type": "Security_Access_Control",
+      "label": "Security Access Control",
+      "category": "ELV / Security",
+      "instances": 1,
+      "tags": [
+        {
+          "name": "Doors",
+          "fullName": "Security_Access_Control_Doors",
+          "sourceName": "Security_Access_Control_Doors",
+          "kind": "numeric",
+          "min": 0,
+          "max": 1000,
+          "integer": true
+        },
+        {
+          "name": "Readers",
+          "fullName": "Security_Access_Control_Readers",
+          "sourceName": "Security_Access_Control_Readers",
+          "kind": "numeric",
+          "min": 0,
+          "max": 2000,
+          "integer": true
+        },
+        {
+          "name": "Controllers",
+          "fullName": "Security_Access_Control_Controllers",
+          "sourceName": "Security_Access_Control_Controllers",
+          "kind": "numeric",
+          "min": 0,
+          "max": 500,
+          "integer": true
+        },
+        {
+          "name": "Door_Status",
+          "fullName": "Security_Access_Control_Door_Status",
+          "sourceName": "Security_Access_Control_Door_Status",
+          "kind": "boolean"
+        },
+        {
+          "name": "Forced_Door",
+          "fullName": "Security_Access_Control_Forced_Door",
+          "sourceName": "Security_Access_Control_Forced_Door",
+          "kind": "boolean"
+        },
+        {
+          "name": "Door_Held_Open",
+          "fullName": "Security_Access_Control_Door_Held_Open",
+          "sourceName": "Security_Access_Control_Door_Held_Open",
+          "kind": "boolean"
+        },
+        {
+          "name": "Access_Events",
+          "fullName": "Security_Access_Control_Access_Events",
+          "sourceName": "Security_Access_Control_Access_Events",
+          "kind": "numeric",
+          "min": 0,
+          "max": 2147483647,
+          "integer": true
+        },
+        {
+          "name": "Security_Alarms",
+          "fullName": "Security_Access_Control_Security_Alarms",
+          "sourceName": "Security_Access_Control_Security_Alarms",
+          "kind": "boolean"
+        }
+      ]
+    },
+    {
+      "type": "Data_System",
+      "label": "Data System",
+      "category": "ELV / IT",
+      "instances": 1,
+      "tags": [
+        {
+          "name": "Network_Switches",
+          "fullName": "Data_System_Network_Switches",
+          "sourceName": "Data_System_Network_Switches",
+          "kind": "numeric",
+          "min": 0,
+          "max": 500,
+          "integer": true
+        },
+        {
+          "name": "Core_Switches",
+          "fullName": "Data_System_Core_Switches",
+          "sourceName": "Data_System_Core_Switches",
+          "kind": "numeric",
+          "min": 0,
+          "max": 50,
+          "integer": true
+        },
+        {
+          "name": "Access_Switches",
+          "fullName": "Data_System_Access_Switches",
+          "sourceName": "Data_System_Access_Switches",
+          "kind": "numeric",
+          "min": 0,
+          "max": 500,
+          "integer": true
+        },
+        {
+          "name": "Server_Status",
+          "fullName": "Data_System_Server_Status",
+          "sourceName": "Data_System_Server_Status",
+          "kind": "boolean"
+        },
+        {
+          "name": "UPS_Status",
+          "fullName": "Data_System_UPS_Status",
+          "sourceName": "Data_System_UPS_Status",
+          "kind": "boolean"
+        },
+        {
+          "name": "Network_Availability",
+          "fullName": "Data_System_Network_Availability",
+          "sourceName": "Data_System_Network_Availability",
+          "kind": "numeric",
+          "min": 0,
+          "max": 100,
+          "integer": true
+        },
+        {
+          "name": "Critical_Alarms",
+          "fullName": "Data_System_Critical_Alarms",
+          "sourceName": "Data_System_Critical_Alarms",
+          "kind": "boolean"
+        }
+      ]
+    },
+    {
+      "type": "Intercom",
+      "label": "Intercom",
+      "category": "ELV",
+      "instances": 1,
+      "tags": [
+        {
+          "name": "Apartment_Call",
+          "fullName": "Intercom_Apartment_Call",
+          "sourceName": "Intercom_Apartment_Call",
+          "kind": "boolean"
+        },
+        {
+          "name": "Lobby_Station",
+          "fullName": "Intercom_Lobby_Station",
+          "sourceName": "Intercom_Lobby_Station",
+          "kind": "boolean"
+        },
+        {
+          "name": "Security_Station",
+          "fullName": "Intercom_Security_Station",
+          "sourceName": "Intercom_Security_Station",
+          "kind": "boolean"
+        },
+        {
+          "name": "Door_Release",
+          "fullName": "Intercom_Door_Release",
+          "sourceName": "Intercom_Door_Release",
+          "kind": "boolean"
+        },
+        {
+          "name": "Device_Status",
+          "fullName": "Intercom_Device_Status",
+          "sourceName": "Intercom_Device_Status",
+          "kind": "boolean"
+        },
+        {
+          "name": "Communication_Fault",
+          "fullName": "Intercom_Communication_Fault",
+          "sourceName": "Intercom_Communication_Fault",
+          "kind": "boolean"
+        }
+      ]
+    },
+    {
+      "type": "Water_Tanks",
+      "label": "Water Tanks",
+      "category": "Plumbing",
+      "instances": 1,
+      "tags": [
+        {
+          "name": "Tank_Level_Percent",
+          "fullName": "Water_Tanks_Tank_Level_Percent",
+          "sourceName": "Water_Tanks_Tank_Level_Percent",
+          "kind": "numeric",
+          "min": 0,
+          "max": 100,
+          "integer": true
+        },
+        {
+          "name": "High_Level",
+          "fullName": "Water_Tanks_High_Level",
+          "sourceName": "Water_Tanks_High_Level",
+          "kind": "boolean"
+        },
+        {
+          "name": "Low_Level",
+          "fullName": "Water_Tanks_Low_Level",
+          "sourceName": "Water_Tanks_Low_Level",
+          "kind": "boolean"
+        },
+        {
+          "name": "Critical_Low_Level",
+          "fullName": "Water_Tanks_Critical_Low_Level",
+          "sourceName": "Water_Tanks_Critical_Low_Level",
+          "kind": "boolean"
+        }
+      ]
+    },
+    {
+      "type": "Lifting_Booster_Pumps",
+      "label": "Lifting Booster Pumps",
+      "category": "Plumbing",
+      "instances": 1,
+      "tags": [
+        {
+          "name": "Auto_Manual",
+          "fullName": "Lifting_Booster_Pumps_Auto_Manual",
+          "sourceName": "Lifting_Booster_Pumps_Auto_Manual",
+          "kind": "boolean"
+        },
+        {
+          "name": "Start_Stop",
+          "fullName": "Lifting_Booster_Pumps_Start_Stop",
+          "sourceName": "Lifting_Booster_Pumps_Start_Stop",
+          "kind": "boolean"
+        },
+        {
+          "name": "Duty_Standby",
+          "fullName": "Lifting_Booster_Pumps_Duty_Standby",
+          "sourceName": "Lifting_Booster_Pumps_Duty_Standby",
+          "kind": "boolean"
+        },
+        {
+          "name": "Run_Hours",
+          "fullName": "Lifting_Booster_Pumps_Run_Hours",
+          "sourceName": "Lifting_Booster_Pumps_Run_Hours",
+          "kind": "numeric",
+          "min": 0,
+          "max": 1000000,
+          "integer": true
+        },
+        {
+          "name": "Fault",
+          "fullName": "Lifting_Booster_Pumps_Fault",
+          "sourceName": "Lifting_Booster_Pumps_Fault",
+          "kind": "boolean"
+        },
+        {
+          "name": "Pressure",
+          "fullName": "Lifting_Booster_Pumps_Pressure",
+          "sourceName": "Lifting_Booster_Pumps_Pressure",
+          "kind": "numeric",
+          "min": 0,
+          "max": 16,
+          "integer": true
+        }
+      ]
+    },
+    {
+      "type": "Water_Meters",
+      "label": "Water Meters",
+      "category": "Plumbing",
+      "instances": 1,
+      "tags": [
+        {
+          "name": "Current_Reading",
+          "fullName": "Water_Meters_Current_Reading",
+          "sourceName": "Water_Meters_Current_Reading",
+          "kind": "numeric",
+          "min": 0,
+          "max": 10000000,
+          "integer": true
+        },
+        {
+          "name": "Daily_Consumption",
+          "fullName": "Water_Meters_Daily_Consumption",
+          "sourceName": "Water_Meters_Daily_Consumption",
+          "kind": "numeric",
+          "min": 0,
+          "max": 20,
+          "integer": true
+        },
+        {
+          "name": "Monthly_Consumption",
+          "fullName": "Water_Meters_Monthly_Consumption",
+          "sourceName": "Water_Meters_Monthly_Consumption",
+          "kind": "numeric",
+          "min": 0,
+          "max": 600,
+          "integer": true
+        },
+        {
+          "name": "Historical_Consumption",
+          "fullName": "Water_Meters_Historical_Consumption",
+          "sourceName": "Water_Meters_Historical_Consumption",
+          "kind": "numeric",
+          "min": 0,
+          "max": 10000000,
+          "integer": true
+        },
+        {
+          "name": "Abnormal_Consumption",
+          "fullName": "Water_Meters_Abnormal_Consumption",
+          "sourceName": "Water_Meters_Abnormal_Consumption",
+          "kind": "boolean"
+        },
+        {
+          "name": "Leakage_Indication",
+          "fullName": "Water_Meters_Leakage_Indication",
+          "sourceName": "Water_Meters_Leakage_Indication",
+          "kind": "boolean"
+        }
+      ]
+    },
+    {
+      "type": "Fire_Fighting_Tank",
+      "label": "Fire Fighting Tank",
+      "category": "Fire Fighting",
+      "instances": 1,
+      "tags": [
+        {
+          "name": "Level",
+          "fullName": "Fire_Fighting_Tank_Level",
+          "sourceName": "Fire_Fighting_Tank_Level",
+          "kind": "numeric",
+          "min": 0,
+          "max": 100,
+          "integer": true
+        },
+        {
+          "name": "Low_Level",
+          "fullName": "Fire_Fighting_Tank_Low_Level",
+          "sourceName": "Fire_Fighting_Tank_Low_Level",
+          "kind": "boolean"
+        },
+        {
+          "name": "High_Level",
+          "fullName": "Fire_Fighting_Tank_High_Level",
+          "sourceName": "Fire_Fighting_Tank_High_Level",
+          "kind": "boolean"
+        }
+      ]
+    },
+    {
+      "type": "Electrical_Fire_Pump",
+      "label": "Electrical Fire Pump",
+      "category": "Fire Fighting",
+      "instances": 1,
+      "tags": [
+        {
+          "name": "Auto_Manual",
+          "fullName": "Electrical_Fire_Pump_Auto_Manual",
+          "sourceName": "Electrical_Fire_Pump_Auto_Manual",
+          "kind": "boolean"
+        },
+        {
+          "name": "Run",
+          "fullName": "Electrical_Fire_Pump_Run",
+          "sourceName": "Electrical_Fire_Pump_Run",
+          "kind": "boolean"
+        },
+        {
+          "name": "Fault",
+          "fullName": "Electrical_Fire_Pump_Fault",
+          "sourceName": "Electrical_Fire_Pump_Fault",
+          "kind": "boolean"
+        },
+        {
+          "name": "Pressure",
+          "fullName": "Electrical_Fire_Pump_Pressure",
+          "sourceName": "Electrical_Fire_Pump_Pressure",
+          "kind": "numeric",
+          "min": 0,
+          "max": 25,
+          "integer": true
+        },
+        {
+          "name": "Start",
+          "fullName": "Electrical_Fire_Pump_Start",
+          "sourceName": "Electrical_Fire_Pump_Start",
+          "kind": "boolean"
+        },
+        {
+          "name": "Stop_Status",
+          "fullName": "Electrical_Fire_Pump_Stop_Status",
+          "sourceName": "Electrical_Fire_Pump_Stop_Status",
+          "kind": "boolean"
+        }
+      ]
+    },
+    {
+      "type": "Diesel_Fire_Pump",
+      "label": "Diesel Fire Pump",
+      "category": "Fire Fighting",
+      "instances": 1,
+      "tags": [
+        {
+          "name": "Run",
+          "fullName": "Diesel_Fire_Pump_Run",
+          "sourceName": "Diesel_Fire_Pump_Run",
+          "kind": "boolean"
+        },
+        {
+          "name": "Fault",
+          "fullName": "Diesel_Fire_Pump_Fault",
+          "sourceName": "Diesel_Fire_Pump_Fault",
+          "kind": "boolean"
+        },
+        {
+          "name": "Fuel_Level",
+          "fullName": "Diesel_Fire_Pump_Fuel_Level",
+          "sourceName": "Diesel_Fire_Pump_Fuel_Level",
+          "kind": "numeric",
+          "min": 0,
+          "max": 100,
+          "integer": true
+        },
+        {
+          "name": "Battery",
+          "fullName": "Diesel_Fire_Pump_Battery",
+          "sourceName": "Diesel_Fire_Pump_Battery",
+          "kind": "numeric",
+          "min": 0,
+          "max": 32,
+          "integer": true
+        },
+        {
+          "name": "Oil_Pressure",
+          "fullName": "Diesel_Fire_Pump_Oil_Pressure",
+          "sourceName": "Diesel_Fire_Pump_Oil_Pressure",
+          "kind": "numeric",
+          "min": 0,
+          "max": 10,
+          "integer": true
+        },
+        {
+          "name": "Engine_Temperature",
+          "fullName": "Diesel_Fire_Pump_Engine_Temperature",
+          "sourceName": "Diesel_Fire_Pump_Engine_Temperature",
+          "kind": "numeric",
+          "min": -20,
+          "max": 150,
+          "integer": true
+        },
+        {
+          "name": "Controller_Alarm",
+          "fullName": "Diesel_Fire_Pump_Controller_Alarm",
+          "sourceName": "Diesel_Fire_Pump_Controller_Alarm",
+          "kind": "boolean"
+        }
+      ]
+    },
+    {
+      "type": "Jockey_Pump",
+      "label": "Jockey Pump",
+      "category": "Fire Fighting",
+      "instances": 1,
+      "tags": [
+        {
+          "name": "Auto_Manual",
+          "fullName": "Jockey_Pump_Auto_Manual",
+          "sourceName": "Jockey_Pump_Auto_Manual",
+          "kind": "boolean"
+        },
+        {
+          "name": "Run",
+          "fullName": "Jockey_Pump_Run",
+          "sourceName": "Jockey_Pump_Run",
+          "kind": "boolean"
+        },
+        {
+          "name": "Fault",
+          "fullName": "Jockey_Pump_Fault",
+          "sourceName": "Jockey_Pump_Fault",
+          "kind": "boolean"
+        },
+        {
+          "name": "Pressure",
+          "fullName": "Jockey_Pump_Pressure",
+          "sourceName": "Jockey_Pump_Pressure",
+          "kind": "numeric",
+          "min": 0,
+          "max": 25,
+          "integer": true
+        }
+      ]
+    },
+    {
+      "type": "Exhaust_Fans",
+      "label": "Exhaust Fans",
+      "category": "Ventilation",
+      "instances": 1,
+      "tags": [
+        {
+          "name": "Start_Stop",
+          "fullName": "Exhaust_Fans_Start_Stop",
+          "sourceName": "Exhaust_Fans_Start_Stop",
+          "kind": "boolean"
+        },
+        {
+          "name": "Auto_Manual",
+          "fullName": "Exhaust_Fans_Auto_Manual",
+          "sourceName": "Exhaust_Fans_Auto_Manual",
+          "kind": "boolean"
+        },
+        {
+          "name": "Run_Status",
+          "fullName": "Exhaust_Fans_Run_Status",
+          "sourceName": "Exhaust_Fans_Run_Status",
+          "kind": "boolean"
+        },
+        {
+          "name": "Fault",
+          "fullName": "Exhaust_Fans_Fault",
+          "sourceName": "Exhaust_Fans_Fault",
+          "kind": "boolean"
+        },
+        {
+          "name": "Differential_Pressure",
+          "fullName": "Exhaust_Fans_Differential_Pressure",
+          "sourceName": "Exhaust_Fans_Differential_Pressure",
+          "kind": "numeric",
+          "min": 0,
+          "max": 2000,
+          "integer": true
+        }
+      ]
+    },
+    {
+      "type": "Fresh_Air_Fans",
+      "label": "Fresh Air Fans",
+      "category": "Ventilation",
+      "instances": 1,
+      "tags": [
+        {
+          "name": "Start_Stop",
+          "fullName": "Fresh_Air_Fans_Start_Stop",
+          "sourceName": "Fresh_Air_Fans_Start_Stop",
+          "kind": "boolean"
+        },
+        {
+          "name": "Status",
+          "fullName": "Fresh_Air_Fans_Status",
+          "sourceName": "Fresh_Air_Fans_Status",
+          "kind": "boolean"
+        },
+        {
+          "name": "Fault",
+          "fullName": "Fresh_Air_Fans_Fault",
+          "sourceName": "Fresh_Air_Fans_Fault",
+          "kind": "boolean"
+        },
+        {
+          "name": "VFD_Speed",
+          "fullName": "Fresh_Air_Fans_VFD_Speed",
+          "sourceName": "Fresh_Air_Fans_VFD_Speed",
+          "kind": "numeric",
+          "min": 0,
+          "max": 100,
+          "integer": true
+        },
+        {
+          "name": "Differential_Pressure",
+          "fullName": "Fresh_Air_Fans_Differential_Pressure",
+          "sourceName": "Fresh_Air_Fans_Differential_Pressure",
+          "kind": "numeric",
+          "min": 0,
+          "max": 2000,
+          "integer": true
+        }
+      ]
+    },
+    {
+      "type": "Jet_Fans",
+      "label": "Jet Fans",
+      "category": "Ventilation",
+      "instances": 1,
+      "tags": [
+        {
+          "name": "Auto_Manual",
+          "fullName": "Jet_Fans_Auto_Manual",
+          "sourceName": "Jet_Fans_Auto_Manual",
+          "kind": "boolean"
+        },
+        {
+          "name": "Start_Stop",
+          "fullName": "Jet_Fans_Start_Stop",
+          "sourceName": "Jet_Fans_Start_Stop",
+          "kind": "boolean"
+        },
+        {
+          "name": "Direction",
+          "fullName": "Jet_Fans_Direction",
+          "sourceName": "Jet_Fans_Direction",
+          "kind": "boolean"
+        },
+        {
+          "name": "Speed",
+          "fullName": "Jet_Fans_Speed",
+          "sourceName": "Jet_Fans_Speed",
+          "kind": "numeric",
+          "min": 0,
+          "max": 100,
+          "integer": true
+        },
+        {
+          "name": "Fault",
+          "fullName": "Jet_Fans_Fault",
+          "sourceName": "Jet_Fans_Fault",
+          "kind": "boolean"
+        }
+      ]
+    },
+    {
+      "type": "Top_Roof_Fans",
+      "label": "Top Roof Fans",
+      "category": "Ventilation",
+      "instances": 1,
+      "tags": [
+        {
+          "name": "Start_Stop",
+          "fullName": "Top_Roof_Fans_Start_Stop",
+          "sourceName": "Top_Roof_Fans_Start_Stop",
+          "kind": "boolean"
+        },
+        {
+          "name": "Status",
+          "fullName": "Top_Roof_Fans_Status",
+          "sourceName": "Top_Roof_Fans_Status",
+          "kind": "boolean"
+        },
+        {
+          "name": "Fault",
+          "fullName": "Top_Roof_Fans_Fault",
+          "sourceName": "Top_Roof_Fans_Fault",
+          "kind": "boolean"
+        },
+        {
+          "name": "Speed",
+          "fullName": "Top_Roof_Fans_Speed",
+          "sourceName": "Top_Roof_Fans_Speed",
+          "kind": "numeric",
+          "min": 0,
+          "max": 100,
+          "integer": true
+        }
+      ]
+    },
+    {
+      "type": "Staircase_Fans",
+      "label": "Staircase Fans",
+      "category": "Ventilation",
+      "instances": 1,
+      "tags": [
+        {
+          "name": "Normal_Status",
+          "fullName": "Staircase_Fans_Normal_Status",
+          "sourceName": "Staircase_Fans_Normal_Status",
+          "kind": "boolean"
+        },
+        {
+          "name": "Fire_Mode",
+          "fullName": "Staircase_Fans_Fire_Mode",
+          "sourceName": "Staircase_Fans_Fire_Mode",
+          "kind": "boolean"
+        },
+        {
+          "name": "Run",
+          "fullName": "Staircase_Fans_Run",
+          "sourceName": "Staircase_Fans_Run",
+          "kind": "boolean"
+        },
+        {
+          "name": "Fault",
+          "fullName": "Staircase_Fans_Fault",
+          "sourceName": "Staircase_Fans_Fault",
+          "kind": "boolean"
+        },
+        {
+          "name": "Pressure_Monitoring",
+          "fullName": "Staircase_Fans_Pressure_Monitoring",
+          "sourceName": "Staircase_Fans_Pressure_Monitoring",
+          "kind": "numeric",
+          "min": 0,
+          "max": 500,
+          "integer": true
+        }
+      ]
+    }
+  ]
+}

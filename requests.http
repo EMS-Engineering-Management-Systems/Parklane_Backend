@@ -1,0 +1,237 @@
+### Parklane Backend - runnable request collection
+### VS Code: install "REST Client". IntelliJ: open and click Run.
+### Everything here is also runnable from the generated docs at /docs.
+
+@host = http://localhost:8000
+@api = {{host}}/api
+@device = Transformer
+@index = 1
+
+### ---------------------------------------------------------------- discovery
+
+### Route index
+GET {{api}}
+
+### Health + database ping
+GET {{api}}/health
+
+### Generated OpenAPI schema (Swagger UI is at /docs, ReDoc at /redoc)
+GET {{host}}/openapi.json
+
+### Every collection in Atal with its document count
+GET {{api}}/collections
+
+### Only this device's collections
+GET {{api}}/collections?deviceType={{device}}
+
+
+### ---------------------------------------------------------------- catalogue
+
+### All 28 device types
+GET {{api}}/devices/catalogue
+
+### One type with its full tag list (names, kind, min/max)
+GET {{api}}/devices/catalogue/{{device}}
+
+
+### ------------------------------------------------------------------ devices
+
+### Registered devices
+GET {{api}}/devices
+
+### Filter by category
+GET {{api}}/devices?category=Electrical
+
+### Register a device up front (optional - a POST reading does it automatically)
+POST {{api}}/devices
+Content-Type: application/json
+
+{
+  "deviceType": "Transformer",
+  "index": 2,
+  "location": "Substation B",
+  "description": "Second 11kV/415V transformer"
+}
+
+### One device with its collections and document counts
+GET {{api}}/devices/{{device}}/{{index}}
+
+### Update device metadata
+PATCH {{api}}/devices/{{device}}/{{index}}
+Content-Type: application/json
+
+{
+  "location": "Substation A",
+  "status": "active"
+}
+
+### Unregister, keeping the readings
+DELETE {{api}}/devices/{{device}}/2
+
+### Unregister and drop its collections
+DELETE {{api}}/devices/{{device}}/2?dropCollections=true
+
+
+### ------------------------------------------------------- readings :: create
+
+### Create one reading - creates transformer_1_instant if it does not exist
+POST {{api}}/readings/{{device}}/{{index}}/instant
+Content-Type: application/json
+
+{
+  "timestamp": "2026-03-15T10:00:00Z",
+  "tags": {
+    "Voltage": 10476,
+    "Current": 912,
+    "Frequency": 50,
+    "Power": 2253,
+    "kWh": 262950628,
+    "Temperature": 37,
+    "alarms": 0,
+    "Trip_Status": 0
+  }
+}
+
+### Batch insert - an array on the same route
+POST {{api}}/readings/{{device}}/{{index}}/instant
+Content-Type: application/json
+
+[
+  { "timestamp": "2026-03-15T10:01:00Z", "tags": { "Voltage": 10480, "Current": 905 } },
+  { "timestamp": "2026-03-15T10:02:00Z", "tags": { "Voltage": 10462, "Current": 918 } }
+]
+
+### Fully-qualified tag names from the BMS export are accepted and normalised
+POST {{api}}/readings/{{device}}/{{index}}/instant
+Content-Type: application/json
+
+{
+  "timestamp": "2026-03-15T10:03:00Z",
+  "tags": { "Transformer Voltage": 10470, "Transformer_Current": 900 }
+}
+
+### A flat CSV-export row works too - it is folded into tags automatically
+POST {{api}}/readings/{{device}}/{{index}}/instant
+Content-Type: application/json
+
+{
+  "Timestamp": "2026-03-15T10:04:00Z",
+  "Voltage": 10455,
+  "Current": 921,
+  "Frequency": 50
+}
+
+### Idempotent ingestion - re-posting the same timestamp updates in place
+POST {{api}}/readings/{{device}}/{{index}}/instant/upsert
+Content-Type: application/json
+
+{
+  "timestamp": "2026-03-15T10:05:00Z",
+  "tags": { "Voltage": 10450, "Current": 925 }
+}
+
+### A device outside the catalogue works too (returns an UNKNOWN_DEVICE_TYPE warning)
+POST {{api}}/readings/Chiller/1/instant
+Content-Type: application/json
+
+{
+  "tags": { "Supply_Temp": 6.8, "Return_Temp": 12.1, "Run_Status": 1 }
+}
+
+
+### --------------------------------------------------------- readings :: read
+
+### List, newest first
+GET {{api}}/readings/{{device}}/{{index}}/instant
+
+### Paginated, oldest first
+GET {{api}}/readings/{{device}}/{{index}}/instant?page=1&limit=25&sort=timestamp&order=asc
+
+### Time window
+GET {{api}}/readings/{{device}}/{{index}}/instant?from=2026-03-01&to=2026-04-01
+
+### Only the fields you need
+GET {{api}}/readings/{{device}}/{{index}}/instant?fields=timestamp,tags.Voltage&limit=50
+
+### Exact tag match - every reading with a trip
+GET {{api}}/readings/{{device}}/{{index}}/instant?tags.Trip_Status=1
+
+### Range on a tag
+GET {{api}}/readings/{{device}}/{{index}}/instant?tags.Voltage[gte]=10000&tags.Voltage[lte]=11000
+
+### Only seeded data
+GET {{api}}/readings/{{device}}/{{index}}/instant?source=seed
+
+### Newest reading
+GET {{api}}/readings/{{device}}/{{index}}/instant/latest
+
+### min / max / avg / sum / last per tag over a window
+GET {{api}}/readings/{{device}}/{{index}}/instant/stats?from=2026-03-01&to=2026-04-01
+
+### One reading by id - paste an _id from a list response
+GET {{api}}/readings/{{device}}/{{index}}/instant/000000000000000000000000
+
+
+### ------------------------------------------------------- readings :: update
+
+### Merge at tag level - other tags are untouched
+PATCH {{api}}/readings/{{device}}/{{index}}/instant/000000000000000000000000
+Content-Type: application/json
+
+{
+  "tags": { "Voltage": 10500 }
+}
+
+### Replace the whole reading
+PUT {{api}}/readings/{{device}}/{{index}}/instant/000000000000000000000000
+Content-Type: application/json
+
+{
+  "timestamp": "2026-03-15T10:00:00Z",
+  "tags": { "Voltage": 10500, "Current": 900, "Frequency": 50 }
+}
+
+
+### ------------------------------------------------------- readings :: delete
+
+### One reading
+DELETE {{api}}/readings/{{device}}/{{index}}/instant/000000000000000000000000
+
+### A time range
+DELETE {{api}}/readings/{{device}}/{{index}}/instant?from=2026-01-01&to=2026-02-01
+
+### Everything in the collection - the filter-less form needs confirm=true
+DELETE {{api}}/readings/{{device}}/{{index}}/instant?confirm=true
+
+### Drop a collection outright
+DELETE {{api}}/collections/transformer_1_instant?confirm=true
+
+
+### ---------------------------------------------------- monthly and yearly
+
+### Build transformer_1_monthly from transformer_1_instant
+POST {{api}}/readings/{{device}}/{{index}}/rollup/monthly
+
+### Build transformer_1_yearly
+POST {{api}}/readings/{{device}}/{{index}}/rollup/yearly
+
+### Reprocess one window only
+POST {{api}}/readings/{{device}}/{{index}}/rollup/monthly?from=2026-01-01&to=2026-06-30
+
+### Read the monthly tier
+GET {{api}}/readings/{{device}}/{{index}}/monthly
+
+### One specific month
+GET {{api}}/readings/{{device}}/{{index}}/monthly?year=2026&month=3
+
+### Read the yearly tier
+GET {{api}}/readings/{{device}}/{{index}}/yearly?year=2026
+
+### Monthly documents are writable too
+POST {{api}}/readings/{{device}}/{{index}}/monthly
+Content-Type: application/json
+
+{
+  "timestamp": "2026-02-01T00:00:00Z",
+  "tags": { "kWh": { "count": 43200, "min": 0, "max": 998877, "avg": 501233.5 } }
+}

@@ -1,0 +1,300 @@
+### Parklane Backend - Atal_Users request collection
+### Residents, units, parking, visitors, maintenance and community.
+### VS Code: install "REST Client". Everything is also runnable from /docs.
+
+@host = http://localhost:8000
+@api = {{host}}/api/users
+@resident = youssef
+@unit = H-601
+
+### ---------------------------------------------------------------- overview
+
+### Every resource with its document count and key
+GET {{api}}
+
+
+### --------------------------------------------------------------- residents
+
+### List residents  (passwordHash is never returned)
+GET {{api}}/residents
+
+### Substring search across name, username and residentId
+GET {{api}}/residents?q=youssef
+
+### By business key
+GET {{api}}/residents/{{resident}}
+
+### ...or by ObjectId - both work on the same route
+GET {{api}}/residents/000000000000000000000000
+
+### Create a resident; the password is bcrypt-hashed on the way in
+POST {{api}}/residents
+Content-Type: application/json
+
+{
+  "residentId": "nour",
+  "name": "Nour",
+  "username": "nour.hassan@parklane.com",
+  "password": "change-me",
+  "unitCode": "H-602",
+  "phone": "+20 10 1234 5678"
+}
+
+### Update metadata; omitting password leaves the stored hash untouched
+PATCH {{api}}/residents/nour
+Content-Type: application/json
+
+{
+  "phone": "+20 10 9999 8888",
+  "status": "active"
+}
+
+### Rotate the password - re-hashed, never echoed back
+PATCH {{api}}/residents/nour
+Content-Type: application/json
+
+{
+  "password": "a-better-password"
+}
+
+### Delete
+DELETE {{api}}/residents/nour
+
+
+### ------------------------------------------------------------------- units
+
+### All units
+GET {{api}}/units
+
+### Filter on a declared field
+GET {{api}}/units?tower=Tower H
+
+### An undeclared filter is rejected with the allowed list
+GET {{api}}/units?colour=blue
+
+### One unit, with finance, service charges and document availability
+GET {{api}}/units/{{unit}}
+
+### Update a nested block (replaces that block wholesale)
+PATCH {{api}}/units/{{unit}}
+Content-Type: application/json
+
+{
+  "finance": {
+    "unitPriceEGP": 6750000,
+    "amountPaidEGP": 4725000,
+    "remainingBalanceEGP": 2025000,
+    "paidPercent": 70.0,
+    "nextInstallmentEGP": 180000,
+    "nextInstallmentDueDate": "2026-11-05",
+    "remainingInstallments": 12
+  }
+}
+
+
+### ----------------------------------------------------------------- parking
+
+### Vehicles
+GET {{api}}/vehicles?residentId={{resident}}
+
+### Allocated bays
+GET {{api}}/parking-slots
+
+### Building-wide occupancy, newest first - merged from both resident feeds
+GET {{api}}/parking-occupancy?limit=5
+
+### Occupancy over a window
+GET {{api}}/parking-occupancy?from=2026-10-01&to=2026-10-02
+
+### Is this resident's own bay occupied, over time
+GET {{api}}/parking-slot-status?residentId={{resident}}&limit=10
+
+### Only the moments the bay was in use
+GET {{api}}/parking-slot-status?residentId={{resident}}&isActive=true&limit=10
+
+### Entry / exit / guest events
+GET {{api}}/parking-activity?residentId={{resident}}&type=car_entered&limit=10
+
+### Guest parking requests
+GET {{api}}/parking-guest-requests?residentId={{resident}}
+
+### Raise a guest parking request
+POST {{api}}/parking-guest-requests
+Content-Type: application/json
+
+{
+  "residentId": "{{resident}}",
+  "date": "2026-10-15",
+  "startTime": "18:00:00",
+  "endTime": "23:00:00",
+  "guestCount": 2,
+  "status": "Pending"
+}
+
+
+### ---------------------------------------------------------------- visitors
+
+### Passes for one resident
+GET {{api}}/visitor-passes?residentId={{resident}}
+
+### Only upcoming ones
+GET {{api}}/visitor-passes?residentId={{resident}}&kind=upcoming
+
+### Search by visitor name or plate
+GET {{api}}/visitor-passes?q=Ali
+
+### Within a date window
+GET {{api}}/visitor-passes?from=2026-09-22&to=2026-09-24
+
+### Issue a pass
+POST {{api}}/visitor-passes
+Content-Type: application/json
+
+{
+  "residentId": "{{resident}}",
+  "name": "Omar Khaled",
+  "visitDate": "2026-10-12",
+  "visitTime": "19:30:00",
+  "guestCount": 2,
+  "carPlate": "EGY 1234",
+  "status": "Scheduled",
+  "kind": "upcoming"
+}
+
+### Issue several at once
+POST {{api}}/visitor-passes
+Content-Type: application/json
+
+[
+  { "residentId": "{{resident}}", "name": "Guest A", "visitDate": "2026-10-13", "visitTime": "18:00:00" },
+  { "residentId": "{{resident}}", "name": "Guest B", "visitDate": "2026-10-14", "visitTime": "20:00:00" }
+]
+
+### Mark a pass as arrived - paste an _id from a list response
+PATCH {{api}}/visitor-passes/000000000000000000000000
+Content-Type: application/json
+
+{
+  "status": "Arrived"
+}
+
+### Pass requests awaiting issue
+GET {{api}}/visitor-pass-requests?residentId={{resident}}
+
+
+### ------------------------------------------------------------- maintenance
+
+### All tickets
+GET {{api}}/maintenance-requests
+
+### By status
+GET {{api}}/maintenance-requests?status=Completed
+
+### Search titles and categories
+GET {{api}}/maintenance-requests?q=oven
+
+### One ticket with its full status timeline and technician
+GET {{api}}/maintenance-requests/REQ-2026-83328
+
+### Raise a ticket
+POST {{api}}/maintenance-requests
+Content-Type: application/json
+
+{
+  "requestId": "REQ-2026-90001",
+  "residentId": "{{resident}}",
+  "unitCode": "{{unit}}",
+  "category": "Plumbing",
+  "title": "Kitchen tap dripping",
+  "status": "Submitted",
+  "submittedAt": "2026-10-10T09:00:00Z"
+}
+
+### Assign it
+PATCH {{api}}/maintenance-requests/REQ-2026-90001
+Content-Type: application/json
+
+{
+  "status": "Assigned",
+  "assignedAt": "2026-10-10T10:30:00Z",
+  "technician": { "name": "Hassan Ibrahim", "contact": "+20 11 5758 3064" },
+  "visit": { "date": "2026-10-11", "startTime": "10:00:00", "endTime": "12:00:00" }
+}
+
+### Close it
+PATCH {{api}}/maintenance-requests/REQ-2026-90001
+Content-Type: application/json
+
+{
+  "status": "Completed",
+  "completedAt": "2026-10-11T11:20:00Z"
+}
+
+### Remove it
+DELETE {{api}}/maintenance-requests/REQ-2026-90001
+
+
+### --------------------------------------------------------------- community
+
+### Announcements (shared building-wide)
+GET {{api}}/community-announcements
+
+### Events
+GET {{api}}/community-events
+
+### One event
+GET {{api}}/community-events/family-movie-night
+
+### Who is going to what - the per-resident part
+GET {{api}}/community-event-participation?residentId={{resident}}
+
+### RSVP
+PATCH {{api}}/community-event-participation/000000000000000000000000
+Content-Type: application/json
+
+{
+  "actionState": "I'm Going"
+}
+
+### Service alerts
+GET {{api}}/community-alerts
+
+### Polls, with shared results
+GET {{api}}/community-polls
+
+### How each resident voted
+GET {{api}}/community-poll-votes
+
+### Cast a vote
+POST {{api}}/community-poll-votes
+Content-Type: application/json
+
+{
+  "residentId": "{{resident}}",
+  "pollKey": "resident-priorities",
+  "optionName": "More Community Events"
+}
+
+
+### ------------------------------------------------------------- environment
+
+### Site weather, newest first - merged from both resident feeds
+GET {{api}}/weather?limit=5
+
+### Over a window
+GET {{api}}/weather?from=2026-10-01&to=2026-10-02
+
+### Only one condition
+GET {{api}}/weather?condition=Light Rain&limit=20
+
+
+### ------------------------------------------------------------ bulk delete
+
+### Refused without a filter
+DELETE {{api}}/visitor-passes
+
+### Allowed with a filter
+DELETE {{api}}/visitor-passes?residentId=nour
+
+### Or explicitly confirmed - empties the collection
+DELETE {{api}}/visitor-passes?confirm=true
